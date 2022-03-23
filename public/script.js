@@ -75,6 +75,39 @@ $(function () {
         }
     })
 
+    $("#mute_button").click(function(){
+        const enabled = myStream.getAudioTracks()[0].enabled;
+
+        if(enabled){
+            myStream.getAudioTracks()[0].enabled = false;
+            html = `<i class = "fa fa-microphone-slash"></i>`
+            $("#mute_button").toggleClass("background-red")
+            $("mute_button").html(html)
+        }
+        else{
+            myStream.getAudioTracks()[0].enabled = true;
+            html = `<i class = "fa fa-microphone"></i>`
+            $("#mute_button").toggleClass("background-red")
+            $("mute_button").html(html)
+        }
+    })
+
+    $("#stop_video").click(function(){
+        const enabled = myStream.getVideoTracks()[0].enabled;
+
+        if(enabled){
+            myStream.getVideoTracks()[0].enabled = false;
+            html = `<i class = "fa fa-video-slash"></i>`
+            $("#stop_video").toggleClass("background-red")
+            $("stop_video").html(html)
+        }
+        else{
+            myStream.getVideoTracks()[0].enabled = true;
+            html = `<i class = "fa fa-video"></i>`
+            $("stop_video").toggleClass("background-red")
+            $("stop_video").html(html)
+        }
+    })
 })
 
 peer.on("open", (id) => {
